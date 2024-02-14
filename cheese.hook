@@ -1,0 +1,67 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+local Window = OrionLib:MakeWindow({Name = "Cheese-hook Key system", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+OrionLib:MakeNotification({
+	Name = "Logged in.",
+	Content = "Logged in successfully.",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+_G.Key = "SgS8569SMdkSG?214"
+_G.KeyInput = "string"
+
+function MakeScriptHub()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/sametEXE1/cheese-hook/main/cheese-hook-loader", true))()
+end
+
+function CorrectNoti()
+    OrionLib:MakeNotification({
+        Name = "Alert.",
+        Content = "You have entered the correct key.",
+        Image = "rbxassetid://4483345998",
+        Time = 5
+    })
+end
+
+function InCorrectNoti()
+    OrionLib:MakeNotification({
+        Name = "Alert.",
+        Content = "You have entered the incorrect key.",
+        Image = "rbxassetid://4483345998",
+        Time = 5
+    })
+end
+    
+
+local Tab = Window:MakeTab({
+	Name = "Key system",
+	Icon = "rbxassetid://7743875263",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "Key system"
+})
+
+Section:AddTextbox({
+	Name = "Key System",
+	Default = "Enter Key",
+	TextDisappear = true,
+	Callback = function(Value)
+		_G.KeyInput = Value
+	end	  
+})
+
+Tab:AddButton({
+	Name = "Check Key",
+	Callback = function()
+      		if _G.KeyInput == _G.Key then
+                MakeScriptHub()
+                CorrectNoti()
+            else
+                InCorrectNoti()
+            end
+  	end  
+})
